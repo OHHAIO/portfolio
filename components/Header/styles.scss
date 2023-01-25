@@ -1,0 +1,28 @@
+@import "common/styles/common";
+
+.mainHeader {
+  display: flex;
+  height: 5rem;
+  width: 100vw;
+  background-color: #a2a2a2;
+  position: fixed;
+  padding: 0 5rem;
+  justify-content: space-between;
+  top: 0;
+  opacity: 0.8;
+  align-items: center;
+
+  &__title {
+    font-size: 2rem;
+    font-weight: bold;
+  }
+
+  &__menuButton {
+    cursor: pointer;
+    border: none;
+    height: 2.5rem;
+    width: 2.5rem;
+    background: url("~/assets/images/menuButton.png") no-repeat;
+    background-size: cover;
+  }
+}

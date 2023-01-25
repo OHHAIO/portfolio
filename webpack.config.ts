@@ -1,0 +1,73 @@
+import webpack, { Configuration as WebpackConfig } from "webpack";
+import { Configuration as WebpackDevServerConfig } from "webpack-dev-server";
+import path from "path";
+
+interface Configuration extends WebpackConfig {
+  devServer?: WebpackDevServerConfig;
+}
+
+const isDevelopment = process.env.NODE_ENV !== "production";
+
+const webpackConfig: Configuration = {
+  name: "portfolio",
+  mode: isDevelopment ? "development" : "production",
+  devtool: !isDevelopment ? "hidden-source-map" : "eval",
+  resolve: {
+    extensions: [".ts", ".tsx", ".js", ".jsx", "json"],
+    alias: {
+      "@components": path.resolve(__dirname, "components"),
+    },
+  },
+  entry: {
+    app: "./index.tsx",
+  },
+
+  module: {
+    rules: [
+      {
+        test: /\.tsx?$/,
+        loader: "babel-loader",
+        options: {
+          presets: ["@babel/preset-env", "@babel/preset-react", "@babel/preset-typescript"],
+          exclude: path.join(__dirname, "node_modules"),
+        },
+      },
+      {
+        test: /\.scss/,
+        use: ["style-loader", "css-loader", "sass-loader"],
+      },
+      {
+        test: /\.(png|jpg|jpeg|gif|svg)$/,
+        type: "asset",
+        parser: {
+          dataUrlCondition: {
+            maxSize: 20 * 1024, // 기준을 20KB 로 변경
+          },
+        },
+      },
+    ],
+  },
+  plugins: [new webpack.EnvironmentPlugin({ NODE_ENV: isDevelopment ? "development" : "production" })],
+  output: {
+    path: path.join(__dirname, "dist"),
+    filename: "[name].js",
+    publicPath: "/dist/",
+  },
+  devServer: {
+    historyApiFallback: true,
+    port: 5000,
+    devMiddleware: { publicPath: "/dist/" },
+    open: true,
+    static: { directory: path.resolve(__dirname) },
+  },
+};
+
+if (isDevelopment && webpackConfig.plugins) {
+  webpackConfig.plugins.push(new webpack.HotModuleReplacementPlugin());
+}
+
+if (!isDevelopment && webpackConfig.plugins) {
+  webpackConfig.plugins.push(new webpack.LoaderOptionsPlugin({ minimize: true }));
+}
+
+export default webpackConfig;

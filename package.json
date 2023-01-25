@@ -1,17 +1,21 @@
 {
+  "homepage": "https://github.com/OHHAIO/portfolio/",
   "name": "portfolio",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
   "scripts": {
     "build": "cross-env NODE_ENV=production webpack",
-    "dev": "webpack serve --env development"
+    "dev": "webpack serve --env development",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build"
   },
   "author": "",
   "license": "ISC",
   "dependencies": {
     "cross-env": "^7.0.3",
     "date-fns": "^2.29.3",
+    "gh-pages": "^5.0.0",
     "lodash": "^4.17.21",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",

@@ -49,14 +49,14 @@ const webpackConfig: Configuration = {
   },
   plugins: [new webpack.EnvironmentPlugin({ NODE_ENV: isDevelopment ? "development" : "production" })],
   output: {
-    path: path.join(__dirname, "dist"),
+    path: path.join(__dirname, "build"),
     filename: "[name].js",
-    publicPath: "/dist/",
+    publicPath: "/build/",
   },
   devServer: {
     historyApiFallback: true,
     port: 5000,
-    devMiddleware: { publicPath: "/dist/" },
+    devMiddleware: { publicPath: "/build/" },
     open: true,
     static: { directory: path.resolve(__dirname) },
   },

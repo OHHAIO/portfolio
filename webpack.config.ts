@@ -1,6 +1,7 @@
 import webpack, { Configuration as WebpackConfig } from "webpack";
 import { Configuration as WebpackDevServerConfig } from "webpack-dev-server";
 import path from "path";
+import HtmlWebpackPlugin from "html-webpack-plugin";
 
 interface Configuration extends WebpackConfig {
   devServer?: WebpackDevServerConfig;
@@ -39,11 +40,11 @@ const webpackConfig: Configuration = {
       {
         test: /\.(png|jpg|jpeg|gif|svg)$/,
         type: "asset",
-        parser: {
-          dataUrlCondition: {
-            maxSize: 20 * 1024, // 기준을 20KB 로 변경
-          },
-        },
+        // parser: {
+        //   dataUrlCondition: {
+        //     maxSize: 20 * 1024, // 기준을 20KB 로 변경
+        //   },
+        // },
       },
     ],
   },
@@ -67,6 +68,9 @@ if (isDevelopment && webpackConfig.plugins) {
 }
 
 if (!isDevelopment && webpackConfig.plugins) {
+  new HtmlWebpackPlugin({
+    template: `${path.resolve(__dirname)}/index.html`,
+  });
   webpackConfig.plugins.push(new webpack.LoaderOptionsPlugin({ minimize: true }));
 }
 

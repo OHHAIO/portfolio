@@ -208,6 +208,16 @@ const About: FC = () => {
               <h2>자격증</h2>
             </div>
           </div>
+          <div className="mainContainer">
+            <ul>
+              <li>
+                <span>Test</span>
+                <span>asd</span>
+              </li>
+              <li>Test</li>
+              <li>Test</li>
+            </ul>
+          </div>
         </div>
       </section>
     </main>

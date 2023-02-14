@@ -7,6 +7,20 @@ $skillColor: #6940a5ff;
 $contentsBackColor: rgba(#87837826, 0.15);
 $gray: #9b9a97ff;
 
+@font-face {
+  font-family: Montserrat;
+  src: url("~/assets/fonts/Montserrat.ttf");
+}
+@font-face {
+  font-family: Malgun;
+  src: url("~/assets/fonts/malgun.ttf");
+}
+
+* {
+  box-sizing: border-box;
+  font-family: Segoe UI, Malgun, serif;
+}
+
 .inner {
   width: 80vw;
   margin: 0 auto 4rem auto;

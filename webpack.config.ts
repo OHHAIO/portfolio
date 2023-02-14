@@ -2,6 +2,7 @@ import webpack, { Configuration as WebpackConfig } from "webpack";
 import { Configuration as WebpackDevServerConfig } from "webpack-dev-server";
 import path from "path";
 import HtmlWebpackPlugin from "html-webpack-plugin";
+import { CleanWebpackPlugin } from "clean-webpack-plugin";
 
 interface Configuration extends WebpackConfig {
   devServer?: WebpackDevServerConfig;
@@ -38,26 +39,35 @@ const webpackConfig: Configuration = {
         use: ["style-loader", "css-loader", "sass-loader"],
       },
       {
-        test: /\.(png|jpg|jpeg|gif|svg)$/,
+        test: /\.(png|jpg|jpeg|gif|svg)$/i,
+        type: "asset/resource",
+        generator: {
+          filename: `assets/images/[name][ext]`,
+        },
+      },
+      {
+        test: /\.(ttf)$/,
         type: "asset",
-        parser: {
-          dataUrlCondition: {
-            maxSize: 20 * 1024, // 기준을 20KB 로 변경
-          },
+        generator: {
+          filename: `assets/fonts/[name][ext]`,
         },
       },
     ],
   },
-  plugins: [new webpack.EnvironmentPlugin({ NODE_ENV: isDevelopment ? "development" : "production" })],
+  plugins: [
+    new webpack.EnvironmentPlugin({ NODE_ENV: isDevelopment ? "development" : "production" }),
+    new HtmlWebpackPlugin({
+      template: `${path.resolve(__dirname)}/index.html`,
+    }),
+  ],
   output: {
     path: path.join(__dirname, "build"),
     filename: "[name].js",
-    publicPath: "/build/",
   },
   devServer: {
     historyApiFallback: true,
+    hot: true,
     port: 5000,
-    devMiddleware: { publicPath: "/build/" },
     open: true,
     static: { directory: path.resolve(__dirname) },
   },
@@ -68,12 +78,8 @@ if (isDevelopment && webpackConfig.plugins) {
 }
 
 if (!isDevelopment && webpackConfig.plugins) {
-  webpackConfig.plugins.push(
-    new HtmlWebpackPlugin({
-      template: `${path.resolve(__dirname)}/index.html`,
-    }),
-  );
   webpackConfig.plugins.push(new webpack.LoaderOptionsPlugin({ minimize: true }));
+  webpackConfig.plugins.push(new CleanWebpackPlugin());
 }
 
 export default webpackConfig;

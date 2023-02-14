@@ -3,6 +3,12 @@ import "./styles.scss";
 import CareerInfo, { ICareerInfo } from "../../common/class/CareerInfo";
 import { format } from "date-fns";
 import EducationInfo, { IEducationInfo } from "../../common/class/EducationInfo";
+import IntroduceIcon from "../../assets/images/person.png";
+import CareerIcon from "../../assets/images/bag.png";
+import SkillsIcon from "../../assets/images/skills.png";
+import SeungjunIcon from "../../assets/images/seungjun.jpg";
+import EducationIcon from "../../assets/images/education.png";
+import CertificateIcon from "../../assets/images/certificate.png";
 
 const About: FC = () => {
   const careerInfo: Array<ICareerInfo> = [
@@ -47,7 +53,7 @@ const About: FC = () => {
             </p>
           </div>
           <div className="intro__inner__centerContents">
-            <img className="intro__inner__centerContents__photo" src="assets/images/seungjun.JPG" alt="오승준 사진" />
+            <img className="intro__inner__centerContents__photo" src={SeungjunIcon} alt="오승준 사진" />
             <div className="intro__inner__centerContents__description">
               <p>
                 SEUNGJUN
@@ -68,7 +74,7 @@ const About: FC = () => {
         <div className="inner">
           <div className="inner__subTitle black">
             <div className="inner__subTitle__container">
-              <img src="assets/images/person.png" alt="소개" />
+              <img src={IntroduceIcon} alt="소개" />
               <h2>소개</h2>
             </div>
           </div>
@@ -102,7 +108,7 @@ const About: FC = () => {
         <div className="inner">
           <div className="inner__subTitle black">
             <div className="inner__subTitle__container">
-              <img src="assets/images/bag.png" alt="경력" />
+              <img src={CareerIcon} alt="경력" />
               <h2>경력</h2>
             </div>
           </div>
@@ -124,7 +130,7 @@ const About: FC = () => {
         <div className="inner">
           <div className="inner__subTitle black">
             <div className="inner__subTitle__container">
-              <img src="assets/images/skills.png" alt="기술" />
+              <img src={SkillsIcon} alt="기술" />
               <h2>기술 스택</h2>
             </div>
           </div>
@@ -174,7 +180,7 @@ const About: FC = () => {
         <div className="inner">
           <div className="inner__subTitle black">
             <div className="inner__subTitle__container">
-              <img src="assets/images/education.png" alt="교육" />
+              <img src={EducationIcon} alt="교육" />
               <h2>교육</h2>
             </div>
           </div>
@@ -198,7 +204,7 @@ const About: FC = () => {
         <div className="inner">
           <div className="inner__subTitle black">
             <div className="inner__subTitle__container">
-              <img src="assets/images/certificate.png" alt="자격증" />
+              <img src={CertificateIcon} alt="자격증" />
               <h2>자격증</h2>
             </div>
           </div>

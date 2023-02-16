@@ -7,6 +7,24 @@ $skillColor: #6940a5ff;
 $contentsBackColor: rgba(#87837826, 0.15);
 $gray: #9b9a97ff;
 
+@mixin desktop {
+  @media all and (min-width: 1024px) {
+    @content;
+  }
+}
+
+@mixin tablet {
+  @media all and (min-width: 768px) and (max-width: 1023px) {
+    @content;
+  }
+}
+
+@mixin mobile {
+  @media all and (max-width: 767px) {
+    @content;
+  }
+}
+
 @font-face {
   font-family: Montserrat;
   src: url("~/assets/fonts/Montserrat.ttf");
@@ -21,20 +39,12 @@ $gray: #9b9a97ff;
   font-family: Segoe UI, Malgun, serif;
 }
 
-@media all and (min-width: 1024px) {
-  html {
+html {
+  @include desktop {
     font-size: 10px;
   }
-}
 
-@media all and (min-width: 768px) and (max-width: 1023px) {
-  html {
-    font-size: 9px;
-  }
-}
-
-@media all and (max-width: 767px) {
-  html {
+  @include mobile {
     font-size: 8px;
   }
 }

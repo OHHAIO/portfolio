@@ -1,0 +1,11 @@
+@import "common/styles/common";
+
+.aboutMe {
+  &__container {
+    & > ul > li {
+      & > span:not(:first-child) {
+        padding: 0.2em 0.4em;
+      }
+    }
+  }
+}

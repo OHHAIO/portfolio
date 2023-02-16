@@ -6,7 +6,7 @@ const Header: FC = () => {
     <>
       <header className="mainHeader">
         <span className="mainHeader__title">Portfolio</span>
-        <button className="mainHeader__menuButton"></button>
+        {/*<button className="mainHeader__menuButton"></button>*/}
       </header>
     </>
   );

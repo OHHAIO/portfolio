@@ -1,22 +1,33 @@
 import { differenceInCalendarMonths } from "date-fns";
 
+export interface IWorkInfo {
+  title: string;
+  description: Array<string>;
+}
+
 export interface ICareerInfo {
-  name: string;
+  companyName: string;
+  companyInfo: string;
   startDate: Date;
   endDate: Date;
   employmentPeriod: number;
+  workInfo: Array<IWorkInfo>;
 }
 
 class CareerInfo {
-  name: string;
+  companyName: string;
+  companyInfo: string;
   startDate: Date;
   endDate: Date;
   employmentPeriod: number;
+  workInfo: Array<IWorkInfo>;
 
-  constructor(name: string, startDate: Date, endDate: Date) {
-    this.name = name;
+  constructor(companyName: string, companyInfo: string, startDate: Date, endDate: Date, workInfo: Array<IWorkInfo>) {
+    this.companyName = companyName;
+    this.companyInfo = companyInfo;
     this.startDate = startDate;
     this.endDate = endDate;
+    this.workInfo = workInfo;
     this.employmentPeriod = differenceInCalendarMonths(endDate, startDate);
   }
 }

@@ -1,0 +1,11 @@
+@import "common/styles/common";
+
+.education {
+  &__container {
+    & > ul > li {
+      & > span:not(:first-child) {
+        padding: 0.2em 0.4em;
+      }
+    }
+  }
+}

@@ -30,7 +30,18 @@ const webpackConfig: Configuration = {
         test: /\.tsx?$/,
         loader: "babel-loader",
         options: {
-          presets: ["@babel/preset-env", "@babel/preset-react", "@babel/preset-typescript"],
+          presets: [
+            [
+              "@babel/preset-env",
+              {
+                useBuiltIns: "entry",
+                corejs: "3.22",
+                debug: isDevelopment,
+              },
+            ],
+            "@babel/preset-react",
+            "@babel/preset-typescript",
+          ],
           exclude: path.join(__dirname, "node_modules"),
         },
       },

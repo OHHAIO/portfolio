@@ -6,9 +6,8 @@ const Footer = () => {
     <>
       <footer className="mainFooter">
         <div className="mainFooter__contents">
-          <span>Contact</span>
-          <span>Email : ohseungjun1205@gmail.com</span>
-          <span>git : ohseungjun1205@gmail.com</span>
+          <button className="github" onClick={() => window.open("https://github.com/OHHAIO", "_blank")} />
+          <button className="email" />
         </div>
       </footer>
     </>

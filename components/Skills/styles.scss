@@ -1,0 +1,17 @@
+@import "common/styles/common";
+
+.skills {
+  &__container {
+    & > ul > li {
+      & > span:not(:first-child) {
+        color: $skillColor;
+        padding: 0.2em 0.4em;
+      }
+      & > span:first-child {
+        @include mobile {
+          display: none;
+        }
+      }
+    }
+  }
+}

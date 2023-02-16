@@ -22,12 +22,9 @@
       cursor: pointer;
       border-radius: 50%;
 
-      //&:active {
-      //  background-color: $gray;
-      //}
       &.github {
-        background: url("~/assets/images/github.png") no-repeat $white center;
-        object-fit: contain;
+        background: url("~/assets/images/github.png") no-repeat $white;
+        background-size: contain;
         &:active {
           background-color: $gray;
         }

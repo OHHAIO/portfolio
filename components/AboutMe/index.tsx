@@ -1,6 +1,7 @@
 import React from "react";
 import "./styles.scss";
 import IntroduceIcon from "../../assets/images/person.png";
+import { goToGithub, goToUniversity } from "../../common/method/common";
 
 const AboutMe = () => {
   return (
@@ -28,11 +29,15 @@ const AboutMe = () => {
             </li>
             <li>
               <span>GitHub</span>
-              <span>https://github.com/OHHAIO</span>
+              <span className="clickable" onClick={goToGithub}>
+                https://github.com/OHHAIO
+              </span>
             </li>
             <li>
               <span>Graduation</span>
-              <span>Kwansei Gakuin University(Japan) / 국제학과</span>
+              <span className="clickable" onClick={goToUniversity}>
+                Kwansei Gakuin University(Japan) / 국제학과
+              </span>
             </li>
           </ul>
         </div>

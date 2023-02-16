@@ -15,11 +15,11 @@ const Certification = () => {
         <div className="mainContainer">
           <ul>
             <li>
-              <span>2011.12 취득</span>
+              <span>2011.12</span>
               <span>JLPT N1 급</span>
             </li>
             <li>
-              <span>2016.08 취득</span>
+              <span>2016.08</span>
               <span>ITQ Master(엑셀)</span>
             </li>
           </ul>

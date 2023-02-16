@@ -1,13 +1,13 @@
 import React from "react";
 import "./styles.scss";
+import { goToGithub } from "../../common/method/common";
 
 const Footer = () => {
   return (
     <>
       <footer className="mainFooter">
         <div className="mainFooter__contents">
-          <button className="github" onClick={() => window.open("https://github.com/OHHAIO", "_blank")} />
-          <button className="email" />
+          <button className="github" onClick={goToGithub} />
         </div>
       </footer>
     </>

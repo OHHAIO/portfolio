@@ -43,11 +43,7 @@ const About: FC = () => {
       <Career />
       <Education />
       <Certification />
-      {isShowScrollTop && (
-        <button className="goTop" onClick={scrollToTop}>
-          ▲
-        </button>
-      )}
+      {isShowScrollTop && <button className="goTop" onClick={scrollToTop} />}
     </main>
   );
 };
